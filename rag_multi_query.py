@@ -111,6 +111,6 @@ for question in test_questions:
 
 
 # Write results to file
-with open('./results/my_rag_output_mq5.json', mode='w', encoding='utf-8') as f:
+with open('./results/my_rag_output.json', mode='w', encoding='utf-8') as f:
     f.write(json.dumps(json_results, indent=4))
 

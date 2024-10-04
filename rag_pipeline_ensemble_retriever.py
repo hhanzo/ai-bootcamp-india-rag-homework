@@ -32,9 +32,10 @@ all_splits = text_splitter.split_documents(docs)
 
 
 #indexing: Store
+#setting the no of documents to be retrieved 'k'
 vectorstore = Chroma.from_documents(documents=all_splits, embedding=OpenAIEmbeddings())
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 7})
-
+#setting the no of documents to be retrieved 'k'
 bm25_retriever = BM25Retriever.from_documents(all_splits)
 bm25_retriever.k=7
 
@@ -79,6 +80,6 @@ for question in test_questions:
     "contexts" : [context.page_content for context in response["context"]]
 } )
 
-with open('./results/my_rag_output_er7.json', mode='w', encoding='utf-8') as f:
+with open('./results/my_rag_output.json', mode='w', encoding='utf-8') as f:
   f.write( json.dumps(json_results, indent=4) )
 
